@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Arboreto Carmelo Palma</string>
+    <string name="navigation_drawer_open">Abrir navegación</string>
+    <string name="navigation_drawer_close">Cerrar navegación</string>
+    <string name="nav_header_title">Arboreto Carmelo Palma UCA</string>
+    <string name="nav_header_subtitle">herbarionacional@uca.edu.ni</string>
+    <string name="nav_header_desc">Encabezado navegación</string>
+    <string name="action_settings">Configuración</string>
+
+    <string name="menu_home">Inicio</string>
+    <string name="menu_trees">Árboles</string>
+    <string name="menu_services">Servicios</string>
+    <string name="menu_products">Productos</string>
+    <string name="menu_events">Eventos</string>
+
+    <string name="txt_home"><b>Arboreto Carmelo Palma</b></string>
+    <string name="txt_home_2">El Arboreto es un proyecto del Programa de Calidad Ambiental de la UCA. Se inicia en el año 2006, con la asignación de área, limpieza y plantación de unas 30 especies con un promedio de 3 individuos por especies, a la fecha tenemos 124 planta rotuladas, con el nombre de la Familia; Nombre Científico y Nombre Común.\n\n<b>Próximos eventos:</b>\n\n</string>
+
+    <string name="email">herbarionacional@uca.edu.ni</string>
+    <string name="subject">Me gustaría información del Arboreto</string>
+    <string name="message">Hola,\n\n Me gustaría tener información de los árboles \n\n Saludos</string>
+
+    <string name="empty_list">No hay elementos en la lista!</string>
+    <string name="error">No hay elementos en la lista!</string>
+</resources>

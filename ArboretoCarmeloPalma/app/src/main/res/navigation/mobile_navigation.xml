@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="ni.edu.uca.moviles2.arboretocarmelopalma.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_trees"
+        android:name="ni.edu.uca.moviles2.arboretocarmelopalma.ui.trees.TreesFragment"
+        android:label="@string/menu_trees"
+        tools:layout="@layout/fragment_trees">
+
+        <action
+            android:id="@+id/action_main_screen_to_info"
+            app:destination="@id/nav_info_tree"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_services"
+        android:name="ni.edu.uca.moviles2.arboretocarmelopalma.ui.services.ServicesFragment"
+        android:label="@string/menu_services"
+        tools:layout="@layout/fragment_services" />
+
+    <fragment
+        android:id="@+id/nav_info_tree"
+        android:name="ni.edu.uca.moviles2.arboretocarmelopalma.ui.trees.TreeInfoFragment"
+        android:label="@string/menu_trees"
+        tools:layout="@layout/fragment_info_tree" />
+</navigation>
