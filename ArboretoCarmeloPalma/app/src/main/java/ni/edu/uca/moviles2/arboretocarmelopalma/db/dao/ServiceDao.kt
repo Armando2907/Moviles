@@ -2,7 +2,7 @@ package ni.edu.uca.moviles2.arboretocarmelopalma.db.dao
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
-import ni.edu.uca.moviles2.arboretocarmelopalma.db.entities.EventEntity
+import ni.edu.uca.moviles2.arboretocarmelopalma.db.entities.ServiceEntity
 
 /*
     Objeto de acceso a datos DAO (Data Access Object)
@@ -14,19 +14,17 @@ import ni.edu.uca.moviles2.arboretocarmelopalma.db.entities.EventEntity
 
  */
 @Dao
-interface EventDao {
+interface ServiceDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertEvent(eventEntity : EventEntity)
+    suspend fun insertService(serviceEntity : ServiceEntity)
 
     @Delete()
-    suspend fun deleteEvent(eventEntity : EventEntity)
+    suspend fun deleteService(serviceEntity : ServiceEntity)
 
-    @Query("SELECT * FROM events ORDER BY event_date DESC")
-    fun getEvents(): Flow<List<EventEntity>>
+    @Query("SELECT * FROM services ORDER BY id")
+    fun getServices(): Flow<List<ServiceEntity>>
 
-    @Query("SELECT * FROM events ORDER BY event_date DESC LIMIT 2")
-    fun getNextEvents(): Flow<List<EventEntity>>
+    @Query("DELETE FROM services")
 
-    @Query("DELETE FROM events")
-    suspend fun deleteAllEvents()
+    suspend fun deleteAllServices()
 }

@@ -14,6 +14,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import ni.edu.uca.moviles2.arboretocarmelopalma.R
 import ni.edu.uca.moviles2.arboretocarmelopalma.adapters.EventListAdapter
 import ni.edu.uca.moviles2.arboretocarmelopalma.db.entities.EventEntity
+import ni.edu.uca.moviles2.arboretocarmelopalma.db.entities.ServiceEntity
 import ni.edu.uca.moviles2.arboretocarmelopalma.db.entities.TreeEntity
 import java.util.*
 import javax.inject.Inject
@@ -43,6 +44,7 @@ class HomeFragment : Fragment() {
         textViewHeader.setText(resources.getText(R.string.txt_home))
         textViewSubHeader = view.findViewById(R.id.text_description)
         textViewSubHeader.setText(resources.getText(R.string.txt_home_2))
+        populateDataBase()
 
         // Agregar un observer del LiveData retornado por el repositorio.
         // El método onChanged() se ejecuta cuando la data observada cambia y la actividad
@@ -50,18 +52,17 @@ class HomeFragment : Fragment() {
         homeViewModel.nextEvents.observe(viewLifecycleOwner) { events ->
             // Actualizar la copia cached de los trees en el adapter.
             events.let { this.eventListAdapter.submitList(it) }
-            if(events.size==0) {
-                Snackbar.make(view, resources.getString(R.string.empty_list), Snackbar.LENGTH_SHORT)
-                        .show()
-            }
         }
-        populateDataBase()
         return view
     }
 
     fun populateDataBase(){
+        homeViewModel.deleteAllEvents()
+        homeViewModel.deleteAllTrees()
+        homeViewModel.deleteAllServices()
         homeViewModel.insertEvent(EventEntity(1,"XVII Reunión de ecologistas","Universidad Centroamericana UCA", Date().time))
         homeViewModel.insertEvent(EventEntity(2,"Conferencia regional en relación a los efectos del clima en Arboretos","Universidad Centroamericana UCA", Date().time))
+        homeViewModel.insertEvent(EventEntity(3,"II Encuentro Regional de Floristas","Centro de Convenciones Olof Palme", Date().time))
         homeViewModel.insertTree(TreeEntity(1,"Fabaceae", "Cassia fistula", "Caña fístula","cas","https://es.wikipedia.org/wiki/Cassia_fistula"))
         homeViewModel.insertTree(TreeEntity(2,"Acanthaceae", "Bravaisia integerrima", "Mangle blanco","bra","https://es.wikipedia.org/wiki/Bravaisia_integerrima"))
         homeViewModel.insertTree(TreeEntity(3,"Caricaceae", "Carica", "Papaya","car","https://es.wikipedia.org/wiki/Carica"))
@@ -71,7 +72,9 @@ class HomeFragment : Fragment() {
         homeViewModel.insertTree(TreeEntity(7,"Fabaceae", "Bauhinia monandra", "Pata de vaca","bau","https://en.wikipedia.org/wiki/Bauhinia_monandra"))
         homeViewModel.insertTree(TreeEntity(8,"Apocynaceae", "Cataranthus roseus", "Primorosa","cat","https://es.wikipedia.org/wiki/Catharanthus_roseus"))
         homeViewModel.insertTree(TreeEntity(9,"Euphorbiaceae", "Euphorbia milii", "Corona de Cristo","eup","https://es.wikipedia.org/wiki/Euphorbia_milii"))
-
+        homeViewModel.insertService(ServiceEntity(1,"Visitas Guiadas","Visitas guidas a la naturaleza"))
+        homeViewModel.insertService(ServiceEntity(2,"Venta de semillas","Venta de todo tipo de semillas"))
+        homeViewModel.insertService(ServiceEntity(3,"Otros productos","Venta de otros productos relacionados a árboles"))
     }
 
 

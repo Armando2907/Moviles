@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.services.ServicesFragment">
+    tools:context=".ui.events.EventsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/services_list"
+        android:id="@+id/events_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,6 +18,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context="ni.edu.uca.moviles2.arboretocarmelopalma.ui.services.ServicesFragment"
-        tools:listitem="@layout/list_service_item"/>
+        tools:context="ni.edu.uca.moviles2.arboretocarmelopalma.ui.events.EventsFragment"
+        tools:listitem="@layout/list_event_item"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

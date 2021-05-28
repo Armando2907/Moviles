@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import ni.edu.uca.moviles2.arboretocarmelopalma.db.dao.EventDao
+import ni.edu.uca.moviles2.arboretocarmelopalma.db.dao.ServiceDao
 import ni.edu.uca.moviles2.arboretocarmelopalma.db.dao.TreeDao
 import ni.edu.uca.moviles2.arboretocarmelopalma.repository.ArboretoRepository
 import javax.inject.Singleton
@@ -18,8 +19,9 @@ object RepositoryModule {
     @Provides
     fun provideCatRepository(
             eventDao: EventDao,
-            treeDao: TreeDao
+            treeDao: TreeDao,
+            serviceDao: ServiceDao
     ): ArboretoRepository {
-        return ArboretoRepository(eventDao,treeDao)
+        return ArboretoRepository(eventDao,treeDao,serviceDao)
     }
 }

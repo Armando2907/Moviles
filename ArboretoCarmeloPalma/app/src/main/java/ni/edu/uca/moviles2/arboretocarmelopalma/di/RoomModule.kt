@@ -9,6 +9,7 @@ import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import ni.edu.uca.moviles2.arboretocarmelopalma.db.ArboretoDatabase
 import ni.edu.uca.moviles2.arboretocarmelopalma.db.dao.EventDao
+import ni.edu.uca.moviles2.arboretocarmelopalma.db.dao.ServiceDao
 import ni.edu.uca.moviles2.arboretocarmelopalma.db.dao.TreeDao
 import javax.inject.Singleton
 
@@ -34,5 +35,11 @@ object RoomModule {
     @Provides
     fun provideTreeDao(arboretoDatabase: ArboretoDatabase): TreeDao {
         return arboretoDatabase.treeDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideServiceDao(arboretoDatabase: ArboretoDatabase): ServiceDao {
+        return arboretoDatabase.serviceDao()
     }
 }

@@ -6,6 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import ni.edu.uca.moviles2.arboretocarmelopalma.adapters.EventListAdapter
+import ni.edu.uca.moviles2.arboretocarmelopalma.adapters.ServiceListAdapter
 import ni.edu.uca.moviles2.arboretocarmelopalma.adapters.TreeListAdapter
 import javax.inject.Singleton
 
@@ -24,6 +25,12 @@ object AdapterModule {
     @Provides
     fun provideTreeApapter(application: Application): TreeListAdapter {
         return TreeListAdapter()
+    }
+
+    @Singleton
+    @Provides
+    fun provideServiceApapter(application: Application): ServiceListAdapter {
+        return ServiceListAdapter()
     }
 
 }

@@ -3,8 +3,10 @@ package ni.edu.uca.moviles2.arboretocarmelopalma.repository
 import androidx.annotation.WorkerThread
 import kotlinx.coroutines.flow.Flow
 import ni.edu.uca.moviles2.arboretocarmelopalma.db.dao.EventDao
+import ni.edu.uca.moviles2.arboretocarmelopalma.db.dao.ServiceDao
 import ni.edu.uca.moviles2.arboretocarmelopalma.db.dao.TreeDao
 import ni.edu.uca.moviles2.arboretocarmelopalma.db.entities.EventEntity
+import ni.edu.uca.moviles2.arboretocarmelopalma.db.entities.ServiceEntity
 import ni.edu.uca.moviles2.arboretocarmelopalma.db.entities.TreeEntity
 
 
@@ -12,13 +14,15 @@ import ni.edu.uca.moviles2.arboretocarmelopalma.db.entities.TreeEntity
     Repositorio provee acceso a multiples fuentes de datos
     Declara el DAO como propiedad private en el constructor
  */
-class ArboretoRepository (private val eventDao: EventDao, private val treeDao: TreeDao){
+class ArboretoRepository (private val eventDao: EventDao,
+                          private val treeDao: TreeDao,private val serviceDao: ServiceDao){
 
     // Room ejecuta todos los queries en hilos separados.
     // Flow will notifica al observer cuando los datos cambian.
     val nextEvents: Flow<List<EventEntity>> = eventDao.getNextEvents()
     val allEvents: Flow<List<EventEntity>> = eventDao.getEvents()
     val allTrees: Flow<List<TreeEntity>> = treeDao.getTrees()
+    var allServices: Flow<List<ServiceEntity>> = serviceDao.getServices()
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
@@ -54,6 +58,24 @@ class ArboretoRepository (private val eventDao: EventDao, private val treeDao: T
     @WorkerThread
     suspend fun deleteAllTrees() {
         treeDao.deleteAllTrees()
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun insertService(service: ServiceEntity) {
+        serviceDao.insertService(service)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun deleteService(service: ServiceEntity) {
+        serviceDao.deleteService(service)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun deleteAllServices() {
+        serviceDao.deleteAllServices()
     }
 
 }

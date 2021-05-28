@@ -5,6 +5,7 @@ import androidx.lifecycle.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import ni.edu.uca.moviles2.arboretocarmelopalma.db.entities.EventEntity
+import ni.edu.uca.moviles2.arboretocarmelopalma.db.entities.ServiceEntity
 import ni.edu.uca.moviles2.arboretocarmelopalma.db.entities.TreeEntity
 import ni.edu.uca.moviles2.arboretocarmelopalma.repository.ArboretoRepository
 
@@ -34,6 +35,12 @@ constructor (private val repository: ArboretoRepository
     }
     fun deleteAllTrees() = viewModelScope.launch {
         repository.deleteAllTrees()
+    }
+    fun insertService(service: ServiceEntity) = viewModelScope.launch {
+        repository.insertService(service)
+    }
+    fun deleteAllServices() = viewModelScope.launch {
+        repository.deleteAllServices()
     }
 
 }
